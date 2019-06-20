@@ -21,7 +21,7 @@ app.post('/', (request, response) => {
 })
 
 app.get('/', (request, response) => {
-    response.json(data.txInfo.data)
+    response.json(data.data)
 }) 
 
 
