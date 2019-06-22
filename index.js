@@ -36,19 +36,19 @@ app.post('/', (request, response) => {
     
 })
 
-// function base64ToHex(str) {
-//   for (var i = 0, bin = atob(str.replace(/[ \r\n]+$/, "")), hex = []; i < bin.length; ++i) {
-//       let tmp = bin.charCodeAt(i).toString(16);
-//       if (tmp.length === 1) tmp = "0" + tmp;
-//       hex[hex.length] = tmp;
-//   }
-//   return hex.join(" ");
-// }
+function base64ToHex(str) {
+  for (var i = 0, bin = atob(str.replace(/[ \r\n]+$/, "")), hex = []; i < bin.length; ++i) {
+      let tmp = bin.charCodeAt(i).toString(16);
+      if (tmp.length === 1) tmp = "0" + tmp;
+      hex[hex.length] = tmp;
+  }
+  return hex.join(" ");
+}
+let d = base64ToHex( data.data );
 
 app.get('/', (req, res) => {
     res.json(data)
-    // let d = base64ToHex( data.data );
-    // res.send(d.toUpperCase())
+    res.send(d.toUpperCase())
 }) 
 
 
