@@ -52,7 +52,7 @@ app.get('/', (req, res) => {
     })
     res.json(data)
     let d = base64ToHex( data.data );
-    response.send(d.toUpperCase())
+    res.send(d.toUpperCase())
 }) 
 
 app.get('/about', (req, res) => {
