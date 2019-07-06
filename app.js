@@ -2,6 +2,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const path = require('path')
 const hbs = require('hbs')
+const base64 = require('base-64')
 
 const app = express()
 const port = process.env.PORT || 4000
@@ -16,19 +17,12 @@ app.set('view engine', 'hbs')
 app.set('views', viewPath)
 hbs.registerPartials(partialsPath)
 
-
-app.use(bodyParser.json())
-app.use(
-  bodyParser.urlencoded({
-    extended: true,
-  })
-)
+app.use(express.json())
 
 var data
 
 app.post('/', (req, res) => {
     data = req.body
-    console.log(req.body)
 })
 
 app.get('/lora', (req, res) => {
