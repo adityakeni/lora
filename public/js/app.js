@@ -58,7 +58,7 @@ fetch('/lora').then((response) => {
     messageThree.textContent = 'Space remaining in the Dustbin (%)'
     response.json().then((data) => {
         messageTwo.textContent = JSON.stringify(data)
-        d = data[0].txInfo.data + '='
+        d = data.data + '='
         const a = ConvertBase.hex2dec(d) * 100 / 15
         messageFour.textContent = a
     })
