@@ -5,16 +5,6 @@ const messageTwo = document.querySelector('#message-2');
 const messageThree = document.querySelector('#message-3');
 const messageFour = document.querySelector('#message-4');
 
-// function base64toHEX(base64) {
-//     var raw = atob(base64);
-//     var HEX = '';
-//     for ( i = 0; i < raw.length; i++ ) {
-//         var _hex = raw.charCodeAt(i).toString(16)
-//         HEX += (_hex.length==2?_hex:'0'+_hex);
-//     }
-//     return HEX.toUpperCase();
-// }
-
 (function(){
 
     var ConvertBase = function (num) {
@@ -65,19 +55,12 @@ const messageFour = document.querySelector('#message-4');
 
 fetch('/lora').then((response) => {
     messageOne.textContent = 'JSON Data'
-    messageThree.textContent = 'Space remaining in the Dustbin'
+    messageThree.textContent = 'Space remaining in the Dustbin (%)'
     response.json().then((data) => {
         messageTwo.textContent = JSON.stringify(data)
-        d = data[0].payload.data
-        messageFour.textContent = ConvertBase.hex2dec(d)
-        // try {
-        //     const d1 = d + '='
-        //     messageFour.textContent = base64toHEX(d1)
-            
-        //     console.log(ConvertBase.bin2dec(ConvertBase.hex2bin(d1)))
-        // } catch (e) {
-        //     messageFour.textContent = base64toHEX(d)
-        // }
+        d = data[0].txInfo.data + '='
+        const a = ConvertBase.hex2dec(d) * 100 / 15
+        messageFour.textContent = a
     })
     
 }).catch((error) => {
