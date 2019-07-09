@@ -12,7 +12,7 @@ fetch('/lora').then((response) => {
         messageTwo.textContent = JSON.stringify(data)
         const hex = data.object.dataHex
         const dec = parseInt(hex,16)
-        messageFour.textContent = dec
+        messageFour.textContent = dec * 100 / 15
     })
     
 }).catch((error) => {

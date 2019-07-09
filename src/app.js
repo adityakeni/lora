@@ -80,6 +80,22 @@ app.get('/about', (req, res) => {
     })
   })
   
+  app.get('/help', (req, res) => {
+    res.render('help', {
+        title: 'Help Page',
+        helpText: 'Here are some links to the Git repository and LoRa website!',
+        name: 'Aditya Keni'
+    })
+})
+
+app.get('/help/*', (req, res) => {
+    res.render('404', {
+        title: 404,
+        errorMessage: 'help article not found!',
+        name: 'Aditya Keni'
+    })
+})
+
   app.get('*', (req, res) => {
     res.render('404', {
         title: 404,
@@ -89,5 +105,5 @@ app.get('/about', (req, res) => {
   })
 
 app.listen(port, () => {
-    console.log(`Server is on ${port}`)
+    console.log(`Server is on port ${port}`)
 })
